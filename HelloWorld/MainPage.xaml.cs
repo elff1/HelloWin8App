@@ -48,5 +48,10 @@ namespace HelloWorld
         protected override void SaveState(Dictionary<String, Object> pageState)
         {
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            greetingOutput.Text = "Hello, " + nameInput.Text + "!";
+        }
     }
 }
