@@ -49,6 +49,7 @@ namespace HelloWorld
             {
                 // 创建要充当导航上下文的框架，并导航到第一页
                 rootFrame = new Frame();
+                HelloWorld.Common.SuspensionManager.RegisterFrame(rootFrame, "appFrame");
 
                 if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
