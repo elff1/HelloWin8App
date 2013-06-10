@@ -39,7 +39,7 @@ namespace HelloWorld
         /// 将使用其他入口点。
         /// </summary>
         /// <param name="args">有关启动请求和过程的详细信息。</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs args)
+        protected async override void OnLaunched(LaunchActivatedEventArgs args)
         {
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -54,6 +54,7 @@ namespace HelloWorld
                 if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     //TODO: 从之前挂起的应用程序加载状态
+                    await HelloWorld.Common.SuspensionManager.RestoreAsync();
                 }
 
                 // 将框架放在当前窗口中

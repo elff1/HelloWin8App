@@ -37,6 +37,19 @@ namespace HelloWorld
         /// 字典。首次访问页面时为 null。</param>
         protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
+            // Restore values stored in session state.
+            if (pageState != null && pageState.ContainsKey("greetingOutputText"))
+            {
+                greetingOutput.Text = pageState["greetingOutputText"].ToString();
+            }
+
+            // Restore values stored in app data.
+            Windows.Storage.ApplicationDataContainer roamingSettings =
+                Windows.Storage.ApplicationData.Current.RoamingSettings;
+            if (roamingSettings.Values.ContainsKey("userName"))
+            {
+                nameInput.Text = roamingSettings.Values["userName"].ToString();
+            }
         }
 
         /// <summary>
