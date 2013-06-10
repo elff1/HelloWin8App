@@ -47,11 +47,19 @@ namespace HelloWorld
         /// <param name="pageState">要使用可序列化状态填充的空字典。</param>
         protected override void SaveState(Dictionary<String, Object> pageState)
         {
+            pageState["greetingOutputText"] = greetingOutput.Text;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             greetingOutput.Text = "Hello, " + nameInput.Text + "!";
+        }
+
+        private void NameInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Windows.Storage.ApplicationDataContainer roamingSettings =
+                Windows.Storage.ApplicationData.Current.RoamingSettings;
+            roamingSettings.Values["userName"] = nameInput.Text;
         }
     }
 }
